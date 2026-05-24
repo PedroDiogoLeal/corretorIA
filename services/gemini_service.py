@@ -47,6 +47,8 @@ def gerar_rubricas_ia(api_key, diretrizes, arquivos_contexto):
     genai.configure(api_key=api_key)
     prompt = (
         "Gere critérios amplos de avaliação acadêmica (rubricas) com pesos em %, somando 100%.\n"
+        "Os critérios devem ser específicos ao trabalho abordado nos arquivos de contexto, de modo que um trabalho sobre outro tema deve receber nota zero."
+        "Os critérios devem ser tão específicos quanto possível".
         f"Diretrizes do professor:\n{diretrizes or '[sem diretrizes]'}"
     )
     content = [{"text": prompt}] + _upload_to_parts(arquivos_contexto)
